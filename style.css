@@ -26,6 +26,11 @@
     font-weight: 400;
     font-style: normal;
   }
+
+  @font-face {
+    font-family: "DIST-100";
+    src: url(fonts/ruixyan-test-DIST100.ttf) format("truetype");
+  }
   
   /* === GLOBAL === */
   * {
@@ -61,6 +66,8 @@
     height: 100vh; /* full screen */
     position: relative;
     overflow: hidden;
+    font-family: "DIST-100", sans-serif;
+    font-size: 16rem;
   }
   
   .hero-svg {
