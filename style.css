@@ -1,0 +1,243 @@
+/* === FONTS === */
+@font-face {
+    font-family: "Limkin";
+    src: url("fonts/TMT-LimkinPixelVF.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "Geist_Light";
+    src: url("fonts/GeistMono-Light.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Geist_Bold";
+    src: url("fonts/GeistMono-ExtraBold.ttf") format("truetype");
+    font-weight: 800;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "Hand";
+    src: url("fonts/NewFont-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  /* === GLOBAL === */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory; /* optional for a smooth full-screen scroll */
+  }
+  
+  body {
+    background-color: #000;
+    color: white;
+    overflow-x: hidden;
+  }
+  
+  /* === CONTAINER SECTIONS === */
+  .container {
+    width: 100vw;
+    height: 100vh;
+    border-bottom: 2px solid white;
+    scroll-snap-align: start;
+  }
+  
+  /* === HERO SECTION === */
+  #hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* full screen */
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .hero-svg {
+    width: 50vw;
+    height: auto;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  }
+  
+/* === ABOUT SECTION === */
+#about {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1rem 2rem;
+    gap: 5rem;
+    background-color: #000;
+    flex-wrap: wrap;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* --- LEFT COLUMN (IMAGES GRID) --- */
+  #img-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    flex: 1;
+    max-width: 66%;
+    position: relative;
+  }
+  
+  #img-content img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid white;
+    transition: transform 0.4s ease-out, opacity 0.3s ease-out;
+  }
+  
+  #img-content img:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+  
+  
+  
+  /* --- RIGHT COLUMN (TEXT) --- */
+  #text-content {
+    flex: 1.2;
+    max-width: 33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  #text-content h1 {
+    font-family: "Geist_Bold", Courier, monospace;
+    font-size: 1rem;
+    color: white;
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+  
+  #text-content p {
+    font-family: "Geist_Light", Courier, monospace;
+    font-size: 0.75rem;
+    line-height: 1.7;
+    color: white;
+    margin-bottom: 1.5rem;
+    text-align: left;
+  }
+
+  /* === INFO SECTION === */
+  #font-examples {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1rem 2rem;
+    gap: 5rem;
+    background-color: #000;
+    flex-wrap: wrap;
+    position: relative;
+    overflow: hidden;
+
+  }
+
+  #font-examples h1 {
+    font-family: "Geist_Bold", Courier, monospace;
+    font-size: 1rem;
+    color: white;
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+  
+  #font-examples p {
+    font-family: "Hand", sans-serif, monospace;
+    font-size: 2rem;
+    line-height: 1.7;
+    color: white;
+    margin-bottom: 1.5rem;
+    text-align: left;
+  }
+
+  .play-button {
+    font-family: "Geist_Light", sans-serif, monospace;
+    font-size: 1rem;
+    color: white;
+    border: 1px solid white;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  }
+  
+  .play-button:hover {
+    opacity: 0.9;
+  }
+  
+  /* --- RESPONSIVE LAYOUT --- */
+  @media (max-width: 900px) {
+    #about {
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 2rem;
+    }
+  
+    #img-content, #text-content {
+      max-width: 100%;
+    }
+  
+    #img-content {
+      align-items: center;
+    }
+  
+    #img-content img {
+      width: 80%;
+    }
+  
+    #text-content h1 {
+      text-align: center;
+    }
+  
+    #text-content p {
+      text-align: center;
+    }
+  }
+  
+  
+  /* === TYPOGRAPHY === */
+  h1 {
+    font-family: "Geist_Light", Courier, monospace;
+    color: white;
+    font-size: 1rem;
+    padding: 0.5rem;
+    text-align: center;
+  }
+  
+  p {
+    color: white;
+    font-family: "Geist_Light", Courier, monospace;
+    font-size: 0.75rem;
+    padding: 0.5rem;
+    text-align: left;
+    line-height: 1.6;
+    max-width: 600px;
+  }
+  
+  /* === IMAGE GENERAL === */
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    scale: 0.5;
+  }
+  
+  /* Optional: smooth scroll snap indicator (not visible but keeps flow consistent) */
+  .container:last-of-type {
+    border-bottom: none;
+  }
+  

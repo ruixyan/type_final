@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Two-Hand Variable Font Control</title>
+
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: black;
+      color: white;
+      font-family: sans-serif;
+    }
+
+    #container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scaleX(-1);
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transform: scaleX(-1);
+      pointer-events: none;
+    }
+
+    #alphabet-grid {
+      position: fixed;
+      bottom: 90px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      z-index: 10;
+    }
+
+    .letter-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid white;
+      border-radius: 4px;
+      padding: 6px 10px;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.2s;
+    }
+
+    .letter-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    #controls {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 12px 16px;
+      border-radius: 8px;
+      z-index: 10;
+    }
+
+    #controls label {
+      font-size: 14px;
+      color: white;
+    }
+
+    input[type="range"] {
+      width: 200px;
+      accent-color: white;
+    }
+
+    #back-button {
+        z-index: 10;
+        color: white;
+        border: 1px solid white;
+    }
+
+    @font-face {
+      font-family: "Advent Pro VF";
+      src: url("AdventPro-VariableFont_wdth_wght.ttf") format("truetype");
+      font-weight: 100 900;
+      font-stretch: 75% 125%;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/zenozeng/p5.js-svg@master/dist/p5.svg.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+</head>
+<body>
+  <div id="container">
+    <video id="webcam" autoplay playsinline></video>
+    <canvas id="canvas"></canvas>
+  </div>
+
+  <div id="alphabet-grid"></div>
+
+  <div id="controls">
+    <label>Weight (wght): <span id="weightValue">400</span></label>
+    <input id="weightSlider" type="range" min="100" max="900" step="1" value="400">
+
+    <label>Width (wdth): <span id="widthValue">100</span></label>
+    <input id="widthSlider" type="range" min="75" max="125" step="1" value="100">
+  </div>
+
+  <a href="index.html">
+  <div id="back-button">BACK</div>
+  </a>
+
+  <script src="script2.js"></script>
+</body>
+</html>
