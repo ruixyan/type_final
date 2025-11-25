@@ -29,7 +29,7 @@
 
   @font-face {
     font-family: "DIST-100";
-    src: url(fonts/ruixyan-test-DIST100.ttf) format("truetype");
+    src: url("fonts/ruixyan-test-DIST100.ttf") format("truetype");
   }
   
   /* === GLOBAL === */
