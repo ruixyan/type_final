@@ -5,69 +5,267 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Type Final</title>
-        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="styles2.css" />
     </head>
     <body>
-        <div class="container" id="hero">
-            untitled
-          </div>
-          
-          <div class="container" id="about">
-            <div class="content" id="text-content">
-              <h1>/About/Typeface</h1>
-              <p>
-                This font was created to explore the relationship between 
-                technology and human design. Also to explore different methods 
-                of creating interfaces utilizing computer vision, 
-                quite literally putting human gesture in tangent with the 
-                generation of the letterforms.
-              </p>
-              
-              <h1>/About/Distortion</h1>
-              <p>
-                Utilizing perlin noise as a method of distortion, this font 
-                was created using my own imperfect handwriting - crazy slants and all - and p5js.
-              </p>
-
-              <h1>/About/Computer_Vision</h1>
-              <p>
-                Using MediaPipe, I encorporated computer vision into the the UI.
-              </p>
-          
-              <h1>/Info</h1>
-              <p>
-                Created in 2025 by Rachel Yan. 
-                If you want to learn more then buy my book here.
-              </p>
-            </div>
-            <!-- <div class="content" id="img-content">
-                <img src="/SVG/perlin1.jpeg" alt="Perlin noise" />
-                <img src="/SVG/perlin2.jpeg" alt="Perlin noise" />
-                <img src="/SVG/perlin3.jpeg" alt="Perlin noise" />
-              </div> -->
-          </div>
-
+        <div class="navbar">
+            <a href="index.html">/Home</a>
+            <a href="About.html">/About</a>
+            <a href="Glyphs.html">/Glyphs</a>
+            <a href="editor.html">/Editor</a>
+        </div>
+        <a href="about.html">
+        <div id="hero">
+            <canvas id="noiseCanvas"></canvas>
+            <div class="hero-text" id="heroText">SYMBIOSIS</div>
+        </div>
+        </a>
         
-          
-        <div class="container" id="font-examples">
-            <div class="content" id="text-content">
-                <h1>
-                    /Styles
-                </h1>
-                <p>
-                    Hand: the quick brown fox jumps over the lazy dog <br><br>
-                    DIST: THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG
-                </p>
-                <a href="play.html">
-                <div class="play-button">
-                    <p>PLAY</p>
+        <div class="container">
+            <!-- <h1>/Styles</h1> -->
+
+            <!-- <div class="text-input-container">
+                <div class="input-label">Preview Text</div>
+                <input type="text" id="text-input" placeholder="Type to preview in all fonts..." value="The quick brown fox jumps over the lazy dog">
+            </div> -->
+    
+    
+            <div class="font-item">
+                <div class="font-header">
+                    <div class="font-name">/SYMBIOSIS/HAND</div>
+                    <div class="size-control">
+                        <span class="size-label">Size</span>
+                        <input type="range" class="size-slider" min="24" max="120" value="64" step="1" data-target="font-1">
+                        <span class="size-value" id="value-1">64px</span>
+                    </div>
                 </div>
-                <div class="play-button">
-                    <p>Try with your hands</p>
+                <div class="font-display font-1" id="font-1" contenteditable="true">The quick brown fox jumps over the lazy dog</div>
+            </div>
+    
+            <div class="font-item">
+                <div class="font-header">
+                    <div class="font-name">/SYMBIOSIS/DIST-20</div>
+                    <div class="size-control">
+                        <span class="size-label">Size</span>
+                        <input type="range" class="size-slider" min="24" max="120" value="64" step="1" data-target="font-2">
+                        <span class="size-value" id="value-2">64px</span>
+                    </div>
                 </div>
-                </a>
+                <div class="font-display font-2" id="font-2" contenteditable="true">The quick brown fox jumps over the lazy dog</div>
+            </div>
+    
+            <div class="font-item">
+                <div class="font-header">
+                    <div class="font-name">/SYMBIOSIS/DIST-40</div>
+                    <div class="size-control">
+                        <span class="size-label">Size</span>
+                        <input type="range" class="size-slider" min="24" max="120" value="64" step="1" data-target="font-3">
+                        <span class="size-value" id="value-3">64px</span>
+                    </div>
+                </div>
+                <div class="font-display font-3" id="font-3" contenteditable="true">The quick brown fox jumps over the lazy dog</div>
+            </div>
+    
+            <div class="font-item">
+                <div class="font-header">
+                    <div class="font-name">/SYMBIOSIS/DIST-60</div>
+                    <div class="size-control">
+                        <span class="size-label">Size</span>
+                        <input type="range" class="size-slider" min="24" max="120" value="64" step="1" data-target="font-4">
+                        <span class="size-value" id="value-4">64px</span>
+                    </div>
+                </div>
+                <div class="font-display font-4" id="font-4" contenteditable="true">The quick brown fox jumps over the lazy dog</div>
+            </div>
+    
+            <div class="font-item">
+                <div class="font-header">
+                    <div class="font-name">/SYMBIOSIS/DIST-80</div>
+                    <div class="size-control">
+                        <span class="size-label">Size</span>
+                        <input type="range" class="size-slider" min="24" max="120" value="64" step="1" data-target="font-5">
+                        <span class="size-value" id="value-5">64px</span>
+                    </div>
+                </div>
+                <div class="font-display font-5" id="font-5" contenteditable="true">The quick brown fox jumps over the lazy dog</div>
+            </div>
+    
+            <div class="font-item">
+                <div class="font-header">
+                    <div class="font-name">/SYMBIOSIS/DIST-100</div>
+                    <div class="size-control">
+                        <span class="size-label">Size</span>
+                        <input type="range" class="size-slider" min="24" max="120" value="64" step="1" data-target="font-6">
+                        <span class="size-value" id="value-6">64px</span>
+                    </div>
+                </div>
+                <div class="font-display font-6" id="font-6" contenteditable="true">The quick brown fox jumps over the lazy dog</div>
             </div>
         </div>
-        <script src="script.js"></script>
+        <div class="container paragraph-container">
+            <div class="paragraph-item">
+                <div class="font-header">
+                    <div class="font-name">/SYMBIOSIS/HAND</div>
+                    <div class="size-control">
+                        <span class="size-label">Size</span>
+                        <input type="range" class="size-slider" min="12" max="32" value="16" step="1" data-target="para-1">
+                        <span class="size-value" id="para-value-1">16px</span>
+                    </div>
+                </div>
+            
+                <div class="paragraph-display font-1" id="para-1" contenteditable="true">
+                    As the starting point of the industrial revolution, the machine took the
+                place of the worker. A person who handled just one tool was replaced by a mechanism wielding many
+            similar tools simultaneously and powered by a single motive force of whatever type. Here we have the machine,
+        but only as a simple element in machine-driven production.
+                </div>
+            
+                <div class="citation" contenteditable="true">
+                    — Capital, Karl Marx (Reitter trans, 2024), p.345.
+                </div>
+            </div>
+            
+
+            <div class="paragraph-item">
+                <div class="font-header">
+                    <div class="font-name">/SYMBIOSIS/DIST-20</div>
+                    <div class="size-control">
+                        <span class="size-label">Size</span>
+                        <input type="range" class="size-slider" min="12" max="32" value="16" step="1" data-target="para-2">
+                        <span class="size-value" id="para-value-2">16px</span>
+                    </div>
+                </div>
+                <div class="paragraph-display font-2" id="para-2" contenteditable="true">
+                    And the machine does not act solely as a competitor whose superior power 
+                    is always on the point of rendering the wage-laborer superfluous. 
+                    It is as a power hostile to the laborer that capital makes use of it. 
+                    It has become the most effective weapon for repressing strikes, 
+                    those periodic revolts of labor against the despotism of capital. 
+                    Some of the most important applications of machinery (new inventions or 
+                    improvements in existing machinery) have been introduced by capital,
+                     in order to overcome the resistance of striking workingmen.
+
+
+                </div>
+            
+                <div class="citation" contenteditable="true">
+                    — Capital, Karl Marx (Reitter trans, 2024), p.345.
+                </div>
+            </div>
+
+            <div class="paragraph-item">
+                <div class="font-header">
+                    <div class="font-name">/SYMBIOSIS/DIST-40</div>
+                    <div class="size-control">
+                        <span class="size-label">Size</span>
+                        <input type="range" class="size-slider" min="12" max="32" value="16" step="1" data-target="para-3">
+                        <span class="size-value" id="para-value-3">16px</span>
+                    </div>
+                </div>
+                <div class="paragraph-display font-3" id="para-3" contenteditable="true">
+                    If machinery has become the instrument of man's enslavement; 
+                    if this unfailing means for shortening the day's work prolongs it; 
+                    if this magic wand for increasing the wealth of the producer impoverishes 
+                    him—all this is because its use is controlled by the capitalists. 
+                    These contradictions and antagonisms, inseparable from the use of machinery 
+                    in a bourgeois environment, spring not from the nature of machinery,
+                     but from its employment by capitalists as an exploiting agency.
+
+
+                    </div>
+                
+                    <div class="citation" contenteditable="true">
+                        — Capital, Karl Marx (Reitter trans, 2024), p.345.
+                    </div>
+                </div>
+
+            <div class="paragraph-item">
+                <div class="font-header">
+                    <div class="font-name">/SYMBIOSIS/DIST-60</div>
+                    <div class="size-control">
+                        <span class="size-label">Size</span>
+                        <input type="range" class="size-slider" min="12" max="32" value="16" step="1" data-target="para-4">
+                        <span class="size-value" id="para-value-4">16px</span>
+                    </div>
+                </div>
+                <div class="paragraph-display font-4" id="para-4" contenteditable="true"> As modern mechanical industry develops, the character of all branches of industry is transformed.
+
+                    Machinery forces its way into the old manufacturing industries, 
+                    now for one detail operation, now for another, and thus deranges their 
+                    organization based on a fixed system of division of labor and completely 
+                    revolutionizes the composition of their working force. 
+                    Thenceforth, the division of labor is based on the employment of women, 
+                    children and unskilled laborers—more briefly, on the employment of cheap labor.
+                </div>
+            
+                <div class="citation" contenteditable="true">
+                    — Capital, Karl Marx (Reitter trans, 2024), p.345.
+                </div>
+            </div>
+
+
+            <div class="paragraph-item">
+                <div class="font-header">
+                    <div class="font-name">/SYMBIOSIS/DIST-80</div>
+                    <div class="size-control">
+                        <span class="size-label">Size</span>
+                        <input type="range" class="size-slider" min="12" max="32" value="16" step="1" data-target="para-5">
+                        <span class="size-value" id="para-value-5">16px</span>
+                    </div>
+                </div>
+                <div class="paragraph-display font-5" id="para-5" contenteditable="true">
+                    The truth is that the workmen made superfluous by machinery are 
+                    driven from the workshop and thrown upon the labor-market 
+                    where they add to the numbers of the workmen already at the disposal of capital. 
+                    Driven from one branch of industry, they can, of course, seek employment in another. 
+                    But if they find it, if they once more get the means to buy the beans of subsistence 
+                    which their discharge set free—that is to say, which their lack of wages prevented 
+                    them from buying—they owe this to a new capital that has appeared on the labor- market, 
+                    and not to the capital that formerly employed them. The latter capital has not been "set free," 
+                    but has been converted into machinery. 
+                </div>
+            
+                <div class="citation" contenteditable="true">
+                    — Capital, Karl Marx (Reitter trans, 2024), p.345.
+                </div>
+            </div>
+
+            <div class="paragraph-item">
+                <div class="font-header">
+                    <div class="font-name">/SYMBIOSIS/DIST-100</div>
+                    <div class="size-control">
+                        <span class="size-label">Size</span>
+                        <input type="range" class="size-slider" min="12" max="32" value="16" step="1" data-target="para-6">
+                        <span class="size-value" id="para-value-6">16px</span>
+                    </div>
+                </div>
+                <div class="paragraph-display font-6" id="para-6" contenteditable="true"> 
+                    Machinery is not responsible for the miseries that follow in its train.
+                     It is not its fault if, in our social environment, 
+                     it separates the laborer from his means of subsistence. 
+                     Wherever it is introduced, it renders the product cheaper and more abundant. 
+                     After its introduction, society possesses at least as much, if not more, 
+                     of the necessaries of life, than before, for the laborers displaced by it, 
+                     without taking into account the immense portion of the annual product squandered 
+                     by idlers.
+                </div>
+            
+                <div class="citation" contenteditable="true">
+                    — Capital, Karl Marx (Reitter trans, 2024), p.345.
+                </div>
+            </div>
+        </div>
+        <a href="hands.html" class="camera-button" aria-label="Open hands page">
+            <!-- Camera SVG (outline) -->
+            <svg class="camera-icon" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <title>Camera</title>
+              <path d="M21 7h-3.2l-1.6-2.4A1 1 0 0 0 15.6 4H8.4a1 1 0 0 0-.6.6L6.2 7H3a1 1 0 0 0-1 1v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a1 1 0 0 0-1-1zM12 18a4 4 0 1 1 0-8 4 4 0 0 1 0 8z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          
+        
+        
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.min.js"></script>
+<script src="noise-bg.js"></script>
     </body>
 </html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">/Home</a>
+        <a href="About.html">/About</a>
+        <a href="Glyphs.html">/Glyphs</a>
+        <a href="editor.html">/Editor</a>
+        <a href="hands.html">/Hands...</a>
+    </div>
+    <div class="container">
+        <div class="controls">
+            <div class="control">
+                <label for="weightSlider">DIST: <span id="weightValue">400</span></label>
+                <input id="weightSlider" type="range" min="100" max="900" step="1" value="400">
+            </div>
+            <div class="control">
+                <label for="widthSlider">Width (wdth): <span id="widthValue">100</span></label>
+                <input id="widthSlider" type="range" min="75" max="125" step="1" value="100">
+            </div>
+            <div class="control">
+                <label for="colorPicker">Color:</label>
+                <input id="colorPicker" type="color" value="#000000">
+            </div>
+        </div>
+        <div class="playspace">
+            <div class="text-input-container">
+                <div class="input-label">Preview Text</div>
+                <input type="text" id="text-input" placeholder="Type to preview in all fonts..." value="The quick brown fox jumps over the lazy dog">
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

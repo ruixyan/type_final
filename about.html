@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Type Final</title>
+        <link rel="stylesheet" href="about.css" />
+    </head>
+<body>
+  <div class="navbar">
+    <a href="index.html">/Home</a>
+    <a href="About.html">/About</a>
+    <a href="Glyphs.html">/Glyphs</a>
+    <a href="editor.html">/Editor</a>
+    <a href="hands.html">/Hands...</a>
+</div>
+<div id="hero">
+  <canvas id="noiseCanvas"></canvas>
+  <!-- <div class="hero-text" id="heroText">SYMBIOSIS</div> -->
+</div>
+<div class="container" id="about">
+    <div class="content" id="text-content">
+      <h1>/INFO</h1>
+      <p>Weights
+        Glyphs
+        Languages
+      </p>
+      <h1>/ABOUT</h1>
+      <p>
+        This font, <b>SYMBIOSIS v1.0</b>, was developed to explore our (humanity’s) 
+        relationship with technology. It features 6 different styles of various levels 
+        of distortion: starting with a vectorization of my handwiting, and ending with 
+        some loose semblance of a letterform. I used p5js and perlin noise (see the hero above) to distort and 
+        pixelate the forms of my handwriting. Once the distorted letterforms were screenshotted, 
+        I took them into illustrator and Image Traced them, creating some pretty wonky pixel grids 
+        that I honestly liked more than I thought I would. 
+      </p>
+      
+      <h1>/DIST</h1>
+      <p>
+        Utilizing perlin noise as a method of distortion, I displaced the 
+        letterforms, and used a pixel grid to keep the resolution of the letterforms crisp 
+        for vectorization.
+
+      </p>
+      <h1>/CREDITS</h1>
+      <p>
+        Designed by me (Rachel Yan).
+        <br> Engineered also by me.
+        <br> Kerned by, you guessed it, me.
+      </p>
+    </div>
+    <!-- <div class="content" id="img-content">
+        <img src="/SVG/perlin1.jpeg" alt="Perlin noise" />
+        <img src="/SVG/perlin2.jpeg" alt="Perlin noise" />
+        <img src="/SVG/perlin3.jpeg" alt="Perlin noise" />
+      </div> -->
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.min.js"></script>
+  <script src="noise-bg.js"></script>
+</body>
+
+  

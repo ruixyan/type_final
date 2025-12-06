@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Type Final</title>
+        <link rel="stylesheet" href="hands-glyphs.css" />
+    </head>
+    <body>
+        <div class="navbar">
+            <a href="hands.html">/Home</a>
+            <a href="hands-about.html">/About</a>
+            <a href="Glyphs.html">/Glyphs</a>
+        </div>
+        <div class="glyphs-container" id="glyphs">
+            <div class="left-panel">
+                <div class="glyph-display">
+                    <div class="current-glyph" id="currentGlyph">A</div>
+                    <div class="glyph-info">
+                        <div class="info-row">
+                            <span class="label">Character</span>
+                            <span id="charName">Latin Capital Letter A</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Unicode</span>
+                            <span id="unicode">U+0041</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Category</span>
+                            <span id="category">Uppercase Letter</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-panel">
+                <div class="font-selector">
+                    <!-- <label for="fontSelect">Select Font</label> -->
+                    <select id="fontSelect">
+                        <option value="font-Hand">HAND</option>
+                        <option value="font-DIST-20">DIST-20</option>
+                        <option value="font-DIST-40">DIST-40</option>
+                        <option value="font-DIST-60">DIST-60</option>
+                        <option value="font-DIST-80">DIST-80</option>
+                        <option value="font-DIST-100">DIST-100</option>
+                    </select>
+                </div>
+    
+                <div class="grid-section">
+                    <h2>Uppercase</h2>
+                    <div class="alphabet-grid" id="uppercaseGrid"></div>
+                </div>
+    
+                <div class="grid-section">
+                    <h2>Lowercase</h2>
+                    <div class="alphabet-grid" id="lowercaseGrid"></div>
+                </div>
+    
+                <div class="grid-section">
+                    <h2>Numbers</h2>
+                    <div class="alphabet-grid" id="numbersGrid"></div>
+                </div>
+    
+                <div class="grid-section">
+                    <h2>Special Characters</h2>
+                    <div class="alphabet-grid" id="specialGrid"></div>
+                </div>
+
+            </div>
+        <!-- Gesture Control UI -->
+<div id="gesture-cursor">
+    <div class="gesture-cursor-dot">
+        <div class="gesture-cursor-inner"></div>
+    </div>
+    <span class="gesture-cursor-label">SCROLLING</span>
+</div>
+
+<div id="gesture-widget">
+    <div id="gesture-loading">
+        <div class="gesture-spinner"></div>
+        <span style="font-size: 11px; font-weight: 500;">Initializing...</span>
+    </div>
+    <div id="gesture-error" style="display: none;">
+        <span style="font-size: 11px;">Camera unavailable</span>
+    </div>
+    <video id="gesture-video" autoplay playsinline muted class="hidden"></video>
+    <div id="gesture-controls">
+        <button class="gesture-control-btn" id="gesture-minimize-btn">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="4 14 10 14 10 20"></polyline>
+                <polyline points="20 10 14 10 14 4"></polyline>
+                <line x1="14" y1="10" x2="21" y2="3"></line>
+                <line x1="3" y1="21" x2="10" y2="14"></line>
+            </svg>
+        </button>
+    </div>
+    <div id="gesture-status">
+        <div class="gesture-status-dot"></div>
+        <span id="gesture-status-text">Raise hand</span>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.min.js"></script>
+<script src="hands-glyphs.js"></script>
+<script src="main.js"></script>
+<script type="module" src="gesture-control.js"></script>
+</body>
+</html>

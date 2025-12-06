@@ -29,7 +29,27 @@
 
   @font-face {
     font-family: "DIST-100";
-    src: url("fonts/ruixyan-test-DIST100.ttf") format("truetype");
+    src: url("fonts/ruixyanv1-DIST100.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: "DIST-80";
+    src: url("fonts/ruixyanv1-DIST80.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: "DIST-60";
+    src: url("fonts/ruixyanv1-DIST60.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: "DIST-40";
+    src: url("fonts/ruixyanv1-DIST40.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: "DIST-20";
+    src: url("fonts/ruixyanv1-DIST20.ttf") format("truetype");
   }
   
   /* === GLOBAL === */
@@ -38,17 +58,15 @@
     padding: 0;
     box-sizing: border-box;
   }
-  
-  html {
-    scroll-behavior: smooth;
-    scroll-snap-type: y mandatory; /* optional for a smooth full-screen scroll */
-  }
-  
+
   body {
     background-color: #000;
     color: white;
     overflow-x: hidden;
   }
+
+  
+  
   
   /* === CONTAINER SECTIONS === */
   .container {
@@ -57,18 +75,47 @@
     border-bottom: 2px solid white;
     scroll-snap-align: start;
   }
+
+  .navbar {
+    font-family: "Geist_Bold", sans-serif;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: #ffffff;
+    color: #000000;
+    z-index: 100;
+  }
   
   /* === HERO SECTION === */
   #hero {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* full screen */
-    position: relative;
-    overflow: hidden;
+    justify-content: center;    
+    align-items: center;        
+    
+    width: 100vw;
+    height: 100vh;
+  
     font-family: "DIST-100", sans-serif;
-    font-size: 16rem;
+    font-size: 12rem;
+    cursor: pointer;
   }
+  
+  #hero span {
+    display: inline-block;
+    transition: font-family 0.25s ease;
+  }
+  
+  /* hover-changes-each-letter fonts */
+  /* #hero:hover span:nth-child(1) { font-family: "D"; }
+  #hero:hover span:nth-child(2) { font-family: "Courier New"; }
+  #hero:hover span:nth-child(3) { font-family: "Georgia"; }
+  #hero:hover span:nth-child(4) { font-family: "Verdana"; }
+  #hero:hover span:nth-child(5) { font-family: "Arial"; }
+  #hero:hover span:nth-child(6) { font-family: "Trebuchet MS"; }
+  #hero:hover span:nth-child(7) { font-family: "Impact"; }
+  #hero:hover span:nth-child(8) { font-family: monospace; } */
   
   .hero-svg {
     width: 50vw;
@@ -233,6 +280,16 @@
     text-align: left;
     line-height: 1.6;
     max-width: 600px;
+  }
+
+  #dist {
+    font-family: "DIST-100", Courier, monospace;
+    color: white;
+    font-size: 0.75rem;
+    padding: 0.5rem;
+    text-align: left;
+    line-height: 1.6;
+    max-width: 600px
   }
   
   /* === IMAGE GENERAL === */

@@ -1,0 +1,416 @@
+/* === FONTS === */
+@font-face {
+    font-family: "Limkin";
+    src: url("fonts/TMT-LimkinPixelVF.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "Geist_Light";
+    src: url("fonts/GeistMono-Light.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Geist_Bold";
+    src: url("fonts/GeistMono-ExtraBold.ttf") format("truetype");
+    font-weight: 800;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Geist_Regular";
+    src: url("fonts/GeistMono-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "Hand";
+    src: url("fonts/ruixyanv1-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "DIST-100";
+    src: url("fonts/ruixyanv1-DIST100.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: "DIST-80";
+    src: url("fonts/ruixyanv1-DIST80.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: "DIST-60";
+    src: url("fonts/ruixyanv1-DIST60.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: "DIST-40";
+    src: url("fonts/ruixyanv1-DIST40.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: "DIST-20";
+    src: url("fonts/ruixyanv1-DIST20.ttf") format("truetype");
+  }
+  
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000;
+    color: #fff;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 10%;
+    transform: translateX(-50%);
+    width: 20%;
+    padding: 14px 40px;
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    /* background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(8px); */
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    z-index: 10;
+    font-family: "Geist_Regular", sans-serif;
+    mix-blend-mode: difference;
+  }
+  .navbar a {
+    text-decoration: none;
+    font-size: 0.9rem;
+    /* letter-spacing: 0.12em; */
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #eee;
+    transition: color 0.25s ease, opacity 0.25s ease;
+  }
+  .navbar a:hover { color: #717171; opacity: 1; }
+  .navbar a:active { color: #717171; }
+  
+  
+  
+  
+/* GLYPHS */
+
+.glyphs-container {
+    width: 100vw;
+    /* height: 100vh; */
+    border-bottom: 2px solid white;
+    display: flex;
+  }
+
+  h1 {
+    font-family: "Geist_Light", Courier, monospace;
+    color: white;
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    text-align: left;
+  }
+
+  label {
+    font-family: "Geist_Light", Courier, monospace;
+    color: white;
+    font-size: 0.9rem;
+    text-align: left;
+  }
+
+  h2 {
+    font-family: "Geist_Light", Courier, monospace;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 12px;
+    text-align: left;
+    text-transform: uppercase;
+    padding-left: 15px;
+    padding-bottom: 10px;
+  }
+
+  .left-panel {
+    width: 40%;
+    height: 100vh;
+    border-right: 2px solid white;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .right-panel {
+    width: 60%;
+    height: 100vh;
+    /* padding: 60px; */
+    overflow-y: auto;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 80px;
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+
+  .glyph-display {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: "Hand", sans-serif;
+    transform: translateY(-10%);
+    padding-left: 40px;
+  }
+
+  .current-glyph {
+    font-size: 30rem;
+    line-height: 0.9;
+    margin-bottom: 80px;
+    font-weight: 300;
+  }
+
+  .glyph-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Geist_Light', monospace;
+  }
+
+  .info-row {
+    display: flex;
+    gap: 20px;
+  }
+
+  .label {
+    font-weight: 600;
+    min-width: 100px;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+
+  .font-selector {
+    margin-bottom: 20px;
+    width: 100%;
+    border-bottom: 2px solid white;
+    padding: 10px 10px 50px 10px;
+  }
+
+  .alphabet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .grid-section {
+    margin-bottom: 40px;
+  }
+
+  .glyph-cell {
+    aspect-ratio: 1/1;
+    width: 100%;
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border: 1px solid transparent;
+    font-weight: 300;
+    font-family: "DIST-100", sans-serif;
+  }
+
+  .glyph-cell:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .glyph-cell.active {
+    background: white;
+    color: black;
+  }
+
+  .font-Hand { font-family: 'Hand', serif; }
+  .font-DIST-20 { font-family: 'DIST-20', sans-serif; }
+  .font-DIST-40 { font-family: 'DIST-40', sans-serif; }
+  .font-DIST-60 { font-family: 'DIST-60', serif; }
+  .font-DIST-80 { font-family: 'DIST-80', sans-serif; }
+  .font-DIST-100 { font-family: 'DIST-100', serif; }
+
+  /* Custom scrollbar */
+  .right-panel::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .right-panel::-webkit-scrollbar-track {
+    background: black;
+  }
+
+  .right-panel::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .right-panel::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  .button {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-family: "Geist_Regular", sans-serif;
+  }
+
+  /* Add these media queries at the end of your CSS */
+
+@media (max-width: 1024px) {
+    .container {
+      flex-direction: column;
+      height: auto;
+    }
+  
+    .left-panel {
+      width: 100%;
+      height: auto;
+      min-height: 60vh;
+      border-right: none;
+      border-bottom: 2px solid white;
+      padding: 40px;
+    }
+  
+    .right-panel {
+      width: 100%;
+      height: auto;
+      padding: 40px;
+    }
+  
+    .current-glyph {
+      font-size: 12rem;
+      margin-bottom: 40px;
+    }
+  
+    h1 {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .navbar {
+      width: 90%;
+      padding: 12px 20px;
+      gap: 20px;
+    }
+  
+    .navbar a {
+      font-size: 0.8rem;
+    }
+  
+    .left-panel, .right-panel {
+      padding: 30px 20px;
+    }
+  
+    .current-glyph {
+      font-size: 10rem;
+      margin-bottom: 30px;
+    }
+  
+    h1 {
+      font-size: 1rem;
+      margin-bottom: 30px;
+    }
+  
+    .alphabet-grid {
+      grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    }
+  
+    .glyph-cell {
+      font-size: 2rem;
+    }
+  
+    .glyph-info {
+      font-size: 13px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .navbar {
+      width: 95%;
+      padding: 10px 15px;
+      gap: 15px;
+    }
+  
+    .hero-text {
+      font-size: clamp(4rem, 15vw, 10rem);
+    }
+  
+    .left-panel, .right-panel {
+      padding: 20px 15px;
+    }
+  
+    .current-glyph {
+      font-size: 8rem;
+      margin-bottom: 20px;
+    }
+  
+    h1 {
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+  
+    .alphabet-grid {
+      grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+      gap: 1px;
+    }
+  
+    .glyph-cell {
+      font-size: 1.5rem;
+    }
+  
+    .glyph-info {
+      font-size: 12px;
+      gap: 12px;
+    }
+  
+    .label {
+      min-width: 80px;
+      font-size: 11px;
+    }
+  }
+
+  select {
+    padding: 10px 14px 5px 0px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: "Geist_Regular", sans-serif;
+}
+
+select:focus {
+    outline: none;
+    border-bottom: 2px solid #fff;
+}

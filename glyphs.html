@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Type Final</title>
+        <link rel="stylesheet" href="glyphs.css" />
+    </head>
+    <body>
+        <div class="navbar">
+            <a href="index.html">/Home</a>
+            <a href="About.html">/About</a>
+            <a href="Glyphs.html">/Glyphs</a>
+            <a href="editor.html">/Editor</a>
+            <a href="hands.html">/Hands...</a>
+        </div>
+        <div class="glyphs-container" id="glyphs">
+            <div class="left-panel">
+                <div class="glyph-display">
+                    <div class="current-glyph" id="currentGlyph">A</div>
+                    <div class="glyph-info">
+                        <div class="info-row">
+                            <span class="label">Character</span>
+                            <span id="charName">Latin Capital Letter A</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Unicode</span>
+                            <span id="unicode">U+0041</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Category</span>
+                            <span id="category">Uppercase Letter</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-panel">
+                <div class="font-selector">
+                    <!-- <label for="fontSelect">Select Font</label> -->
+                    <select id="fontSelect">
+                        <option value="font-Hand">HAND</option>
+                        <option value="font-DIST-20">DIST-20</option>
+                        <option value="font-DIST-40">DIST-40</option>
+                        <option value="font-DIST-60">DIST-60</option>
+                        <option value="font-DIST-80">DIST-80</option>
+                        <option value="font-DIST-100">DIST-100</option>
+                    </select>
+                </div>
+    
+                <div class="grid-section">
+                    <h2>Uppercase</h2>
+                    <div class="alphabet-grid" id="uppercaseGrid"></div>
+                </div>
+    
+                <div class="grid-section">
+                    <h2>Lowercase</h2>
+                    <div class="alphabet-grid" id="lowercaseGrid"></div>
+                </div>
+    
+                <div class="grid-section">
+                    <h2>Numbers</h2>
+                    <div class="alphabet-grid" id="numbersGrid"></div>
+                </div>
+    
+                <div class="grid-section">
+                    <h2>Special Characters</h2>
+                    <div class="alphabet-grid" id="specialGrid"></div>
+                </div>
+
+            </div>
+        </div>
+  <script src="glyphs.js"></script>
+</body>
+</html> 

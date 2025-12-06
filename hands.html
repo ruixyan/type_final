@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Type Final - Gesture Control</title>
+    <link rel="stylesheet" href="hands.css" />
+</head>
+<body>
+    <div class="navbar">
+        <a href="hands.html">/Home</a>
+        <a href="hands-about.html">/About</a>
+        <a href="hands-glyphs.html">/Glyphs</a>
+        <a href="hands-editor.html">/Editor</a>
+    </div>
+    
+
+        <div id="hero">
+            <canvas id="noiseCanvas"></canvas>
+            <div class="hero-text" id="heroText">SYMBIOSIS</div>
+        </div>
+
+    
+    <div class="container">
+        <div class="font-item">
+            <div class="font-header">
+                <div class="font-name">SYMBIOSIS/HAND</div>
+                <div class="size-control">
+                    <span class="size-label">Size</span>
+                    <input type="range" class="size-slider" min="24" max="120" value="64" step="1" data-target="font-1">
+                    <span class="size-value" id="value-1">64px</span>
+                </div>
+            </div>
+            <div class="font-display font-1" id="font-1" contenteditable="true">The quick brown fox jumps over the lazy dog</div>
+        </div>
+
+        <div class="font-item">
+            <div class="font-header">
+                <div class="font-name">SYMBIOSIS/DIST-20</div>
+                <div class="size-control">
+                    <span class="size-label">Size</span>
+                    <input type="range" class="size-slider" min="24" max="120" value="64" step="1" data-target="font-2">
+                    <span class="size-value" id="value-2">64px</span>
+                </div>
+            </div>
+            <div class="font-display font-2" id="font-2" contenteditable="true">The quick brown fox jumps over the lazy dog</div>
+        </div>
+
+        <div class="font-item">
+            <div class="font-header">
+                <div class="font-name">SYMBIOSIS/DIST-40</div>
+                <div class="size-control">
+                    <span class="size-label">Size</span>
+                    <input type="range" class="size-slider" min="24" max="120" value="64" step="1" data-target="font-3">
+                    <span class="size-value" id="value-3">64px</span>
+                </div>
+            </div>
+            <div class="font-display font-3" id="font-3" contenteditable="true">The quick brown fox jumps over the lazy dog</div>
+        </div>
+
+        <div class="font-item">
+            <div class="font-header">
+                <div class="font-name">SYMBIOSIS/DIST-60</div>
+                <div class="size-control">
+                    <span class="size-label">Size</span>
+                    <input type="range" class="size-slider" min="24" max="120" value="64" step="1" data-target="font-4">
+                    <span class="size-value" id="value-4">64px</span>
+                </div>
+            </div>
+            <div class="font-display font-4" id="font-4" contenteditable="true">The quick brown fox jumps over the lazy dog</div>
+        </div>
+
+        <div class="font-item">
+            <div class="font-header">
+                <div class="font-name">SYMBIOSIS/DIST-80</div>
+                <div class="size-control">
+                    <span class="size-label">Size</span>
+                    <input type="range" class="size-slider" min="24" max="120" value="64" step="1" data-target="font-5">
+                    <span class="size-value" id="value-5">64px</span>
+                </div>
+            </div>
+            <div class="font-display font-5" id="font-5" contenteditable="true">The quick brown fox jumps over the lazy dog</div>
+        </div>
+
+        <div class="font-item">
+            <div class="font-header">
+                <div class="font-name">SYMBIOSIS/DIST-100</div>
+                <div class="size-control">
+                    <span class="size-label">Size</span>
+                    <input type="range" class="size-slider" min="24" max="120" value="64" step="1" data-target="font-6">
+                    <span class="size-value" id="value-6">64px</span>
+                </div>
+            </div>
+            <div class="font-display font-6" id="font-6" contenteditable="true">The quick brown fox jumps over the lazy dog</div>
+        </div>
+    </div>
+
+    <div class="container paragraph-container">
+        <div class="paragraph-item">
+            <div class="font-header">
+                <div class="font-name">SYMBIOSIS/HAND</div>
+                <div class="size-control">
+                    <span class="size-label">Size</span>
+                    <input type="range" class="size-slider" min="12" max="32" value="16" step="1" data-target="para-1">
+                    <span class="size-value" id="para-value-1">16px</span>
+                </div>
+            </div>
+            <div class="paragraph-display font-1" id="para-1" contenteditable="true">Typography is the art and technique of arranging type to make written language legible, readable and appealing. The arrangement of type involves selecting typefaces, point sizes, line lengths, line-spacing, and letter-spacing.</div>
+        </div>
+
+        <div class="paragraph-item">
+            <div class="font-header">
+                <div class="font-name">SYMBIOSIS/DIST-20</div>
+                <div class="size-control">
+                    <span class="size-label">Size</span>
+                    <input type="range" class="size-slider" min="12" max="32" value="16" step="1" data-target="para-2">
+                    <span class="size-value" id="para-value-2">16px</span>
+                </div>
+            </div>
+            <div class="paragraph-display font-2" id="para-2" contenteditable="true">Typography is the art and technique of arranging type to make written language legible, readable and appealing. The arrangement of type involves selecting typefaces, point sizes, line lengths, line-spacing, and letter-spacing.</div>
+        </div>
+
+        <div class="paragraph-item">
+            <div class="font-header">
+                <div class="font-name">SYMBIOSIS/DIST-40</div>
+                <div class="size-control">
+                    <span class="size-label">Size</span>
+                    <input type="range" class="size-slider" min="12" max="32" value="16" step="1" data-target="para-3">
+                    <span class="size-value" id="para-value-3">16px</span>
+                </div>
+            </div>
+            <div class="paragraph-display font-3" id="para-3" contenteditable="true">Typography is the art and technique of arranging type to make written language legible, readable and appealing. The arrangement of type involves selecting typefaces, point sizes, line lengths, line-spacing, and letter-spacing.</div>
+        </div>
+
+        <div class="paragraph-item">
+            <div class="font-header">
+                <div class="font-name">SYMBIOSIS/DIST-60</div>
+                <div class="size-control">
+                    <span class="size-label">Size</span>
+                    <input type="range" class="size-slider" min="12" max="32" value="16" step="1" data-target="para-4">
+                    <span class="size-value" id="para-value-4">16px</span>
+                </div>
+            </div>
+            <div class="paragraph-display font-4" id="para-4" contenteditable="true">Typography is the art and technique of arranging type to make written language legible, readable and appealing. The arrangement of type involves selecting typefaces, point sizes, line lengths, line-spacing, and letter-spacing.</div>
+        </div>
+
+        <div class="paragraph-item">
+            <div class="font-header">
+                <div class="font-name">SYMBIOSIS/DIST-80</div>
+                <div class="size-control">
+                    <span class="size-label">Size</span>
+                    <input type="range" class="size-slider" min="12" max="32" value="16" step="1" data-target="para-5">
+                    <span class="size-value" id="para-value-5">16px</span>
+                </div>
+            </div>
+            <div class="paragraph-display font-5" id="para-5" contenteditable="true">Typography is the art and technique of arranging type to make written language legible, readable and appealing. The arrangement of type involves selecting typefaces, point sizes, line lengths, line-spacing, and letter-spacing.</div>
+        </div>
+
+        <div class="paragraph-item">
+            <div class="font-header">
+                <div class="font-name">SYMBIOSIS/DIST-100</div>
+                <div class="size-control">
+                    <span class="size-label">Size</span>
+                    <input type="range" class="size-slider" min="12" max="32" value="16" step="1" data-target="para-6">
+                    <span class="size-value" id="para-value-6">16px</span>
+                </div>
+            </div>
+            <div class="paragraph-display font-6" id="para-6" contenteditable="true">Typography is the art and technique of arranging type to make written language legible, readable and appealing. The arrangement of type involves selecting typefaces, point sizes, line lengths, line-spacing, and letter-spacing.</div>
+        </div>
+    </div>
+
+    <!-- Gesture Control UI -->
+    <div id="gesture-cursor">
+        <div class="gesture-cursor-dot">
+            <div class="gesture-cursor-inner"></div>
+        </div>
+        <span class="gesture-cursor-label">SCROLLING</span>
+    </div>
+
+    <div id="gesture-widget">
+        <div id="gesture-loading">
+            <div class="gesture-spinner"></div>
+            <span style="font-size: 11px; font-weight: 500;">Initializing...</span>
+        </div>
+        <div id="gesture-error" style="display: none;">
+            <span style="font-size: 11px;">Camera unavailable</span>
+        </div>
+        <video id="gesture-video" autoplay playsinline muted class="hidden"></video>
+        <div id="gesture-controls">
+            <button class="gesture-control-btn" id="gesture-minimize-btn">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="4 14 10 14 10 20"></polyline>
+                    <polyline points="20 10 14 10 14 4"></polyline>
+                    <line x1="14" y1="10" x2="21" y2="3"></line>
+                    <line x1="3" y1="21" x2="10" y2="14"></line>
+                </svg>
+            </button>
+        </div>
+        <div id="gesture-status">
+            <div class="gesture-status-dot"></div>
+            <span id="gesture-status-text">Raise hand</span>
+        </div>
+    </div>
+    <a href="index.html" class="camera-button" aria-label="Open hands page">
+        <!-- Camera SVG (outline) -->
+        <svg class="camera-icon" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <title>Camera</title>
+          <path d="M21 7h-3.2l-1.6-2.4A1 1 0 0 0 15.6 4H8.4a1 1 0 0 0-.6.6L6.2 7H3a1 1 0 0 0-1 1v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a1 1 0 0 0-1-1zM12 18a4 4 0 1 1 0-8 4 4 0 0 1 0 8z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.min.js"></script>
+    <script src="noise-bg2.js"></script>
+    <script src="main.js"></script>
+    <script type="module" src="gesture-control.js"></script>
+</body>
+</html>
