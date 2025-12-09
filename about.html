@@ -6,59 +6,63 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Type Final</title>
         <link rel="stylesheet" href="about.css" />
+        <link rel="icon" type="image/svg+xml" href="SVG/Asset 1.svg">
     </head>
 <body>
   <div class="navbar">
     <a href="index.html">/Home</a>
-    <a href="About.html">/About</a>
-    <a href="Glyphs.html">/Glyphs</a>
+    <a href="about.html">/About</a>
+    <a href="glyphs.html">/Glyphs</a>
     <a href="editor.html">/Editor</a>
-    <a href="hands.html">/Hands...</a>
 </div>
 <div id="hero">
   <canvas id="noiseCanvas"></canvas>
   <!-- <div class="hero-text" id="heroText">SYMBIOSIS</div> -->
 </div>
 <div class="container" id="about">
-    <div class="content" id="text-content">
-      <h1>/INFO</h1>
-      <p>Weights
-        Glyphs
-        Languages
-      </p>
-      <h1>/ABOUT</h1>
-      <p>
-        This font, <b>SYMBIOSIS v1.0</b>, was developed to explore our (humanity’s) 
-        relationship with technology. It features 6 different styles of various levels 
-        of distortion: starting with a vectorization of my handwiting, and ending with 
-        some loose semblance of a letterform. I used p5js and perlin noise (see the hero above) to distort and 
-        pixelate the forms of my handwriting. Once the distorted letterforms were screenshotted, 
-        I took them into illustrator and Image Traced them, creating some pretty wonky pixel grids 
-        that I honestly liked more than I thought I would. 
-      </p>
-      
-      <h1>/DIST</h1>
-      <p>
-        Utilizing perlin noise as a method of distortion, I displaced the 
-        letterforms, and used a pixel grid to keep the resolution of the letterforms crisp 
-        for vectorization.
-
-      </p>
-      <h1>/CREDITS</h1>
-      <p>
-        Designed by me (Rachel Yan).
-        <br> Engineered also by me.
-        <br> Kerned by, you guessed it, me.
-      </p>
-    </div>
-    <!-- <div class="content" id="img-content">
-        <img src="/SVG/perlin1.jpeg" alt="Perlin noise" />
-        <img src="/SVG/perlin2.jpeg" alt="Perlin noise" />
-        <img src="/SVG/perlin3.jpeg" alt="Perlin noise" />
-      </div> -->
+    <!-- <h1>/INFO</h1>
+    <p>Weights: 6
+      Glyphs: a lot
+      Languages
+    </p> -->
+    
+    <h1>/ABOUT</h1>
+    <p>
+      This font, <b>SYMBIOSIS v1.0</b>, was developed to explore our (humanity's) 
+      relationship with technology. It features 6 different styles of various levels 
+      of distortion: starting with a vectorization of my handwiting, and ending with 
+      some loose semblance of a letterform. I used p5js and perlin noise (see the hero above) to distort and 
+      pixelate the forms of my handwriting. Once the distorted letterforms were screenshotted, 
+      I took them into illustrator and Image Traced them, creating some pretty wonky pixel grids 
+      that I honestly liked more than I thought I would. 
+    </p>
+    
+    <h1>/DIST</h1>
+    <p>
+      Utilizing perlin noise as a method of distortion, I displaced the 
+      letterforms, and used a pixel grid to keep the resolution of the letterforms crisp 
+      for vectorization. Perlin noise is a common method of distortion used for generating
+      noise, and also landforms (the terrain generated in Minecraft uses perlin noise!)
+      It is also featured in the hero section above, where you can hover over it to interact.
+      <br>
+    </p>
+    
+    <h1>/CREDITS</h1>
+    <p>
+      Designed by me (Rachel Yan).
+      <br> Coded (font and this website!) also by me.
+    </p>
   </div>
+
+  <a href="hands-about.html" class="camera-button" aria-label="Open hands page">
+    <!-- Camera SVG (outline) -->
+    <svg class="camera-icon" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <title>Camera</title>
+      <path d="M21 7h-3.2l-1.6-2.4A1 1 0 0 0 15.6 4H8.4a1 1 0 0 0-.6.6L6.2 7H3a1 1 0 0 0-1 1v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a1 1 0 0 0-1-1zM12 18a4 4 0 1 1 0-8 4 4 0 0 1 0 8z" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+
   <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.min.js"></script>
   <script src="noise-bg.js"></script>
 </body>
-
-  
+</html>

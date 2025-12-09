@@ -149,15 +149,20 @@
 
 
 
+  /* CONTAINER */
   .container {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     border-bottom: 2px solid white;
-    margin-top: 80px;
-    padding: 14px 40px 14px 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
+    padding: 60px 40px;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .content {
+    display: contents;
   }
 
   h1 {
@@ -165,6 +170,7 @@
     color: #999;
     font-size: 0.9rem;
     text-align: left;
+    text-transform: uppercase;
   }
 
   p {
@@ -174,9 +180,7 @@
     text-align: left;
     line-height: 1.6;
     max-width: 600px;
-    padding-left: 75px;
   }
-
   /* === GESTURE CONTROL STYLES === */
 #gesture-cursor {
     position: fixed;
@@ -376,3 +380,57 @@
         opacity: 0;
     }
 }
+
+.camera-button {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    width: 52px;
+    height: 52px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border: solid 1px rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+  }
+  
+  /* Slight transparent backdrop so it feels part of the UI */
+  /* .camera-button::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+   */
+  /* SVG sizing */
+
+  svg {
+    mix-blend-mode: difference;
+  }
+  .camera-icon {
+    width: 22px;
+    height: 22px;
+    display: block;
+    color: #111; /* stroke color (uses currentColor) */
+    background: transparent;
+  }
+  
+  /* Hover + active */
+  .camera-button:hover {
+
+    background-color:#f5f5f5;
+  }
+  
+  .camera-button:active {
+    transform: translateY(-1px) scale(0.98);
+  }
+  
+  /* Respect prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    .camera-button { transition: none; transform: none; }
+  }
+  

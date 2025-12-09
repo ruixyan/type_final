@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles2.css">
+    <title>Editor</title>
+    <link rel="stylesheet" href="editor.css">
+    <link rel="icon" type="image/svg+xml" href="SVG/Asset 1.svg">
 </head>
 <body>
     <div class="navbar">
@@ -13,30 +14,68 @@
         <a href="About.html">/About</a>
         <a href="Glyphs.html">/Glyphs</a>
         <a href="editor.html">/Editor</a>
-        <a href="hands.html">/Hands...</a>
     </div>
     <div class="container">
         <div class="controls">
-            <div class="control">
-                <label for="weightSlider">DIST: <span id="weightValue">400</span></label>
-                <input id="weightSlider" type="range" min="100" max="900" step="1" value="400">
+            <!-- Character Preview -->
+            <div class="char-preview">
+                <div class="preview-label">Current Character</div>
+                <div id="current-char">A</div>
             </div>
-            <div class="control">
-                <label for="widthSlider">Width (wdth): <span id="widthValue">100</span></label>
-                <input id="widthSlider" type="range" min="75" max="125" step="1" value="100">
+
+            <!-- Character Grid -->
+            <div class="char-grid-section">
+                <div class="grid-label">Select Character</div>
+                <div id="char-grid"></div>
             </div>
+
+            <!-- DIST + Color Control (Same Row) -->
+            <div class="controls-row">
+                <div class="control">
+                    <label for="weightSlider">DIST: <span id="weightValue">400</span></label>
+                    <input id="weightSlider" type="range" min="100" max="900" step="1" value="400">
+                </div>
+                <input id="colorPicker" type="color" value="#ffffff">
+            </div>
+
+            <!-- Save Button -->
+            <button id="save-char-btn">Save Character</button>
+
+            <!-- Text Scale Slider -->
             <div class="control">
-                <label for="colorPicker">Color:</label>
-                <input id="colorPicker" type="color" value="#000000">
+                <label for="scaleSlider">Scale: <span id="scaleValue">64</span>px</label>
+                <input id="scaleSlider" type="range" min="16" max="200" step="1" value="64">
+            </div>
+
+            <!-- Background Color -->
+            <div class="controls-row">
+                <div class="control">
+                    <label for="bgColorPicker">Background:</label>
+                </div>
+                <input id="bgColorPicker" type="color" value="#f5f5f5">
+            </div>
+
+            <!-- Preview Text Input -->
+            <div class="control">
+                <div class="text-input-container">
+                    <div class="input-label">Preview Text</div>
+                    <input type="text" id="text-input" placeholder="Type here..." value="Hello!">
+                </div>
             </div>
         </div>
-        <div class="playspace">
-            <div class="text-input-container">
-                <div class="input-label">Preview Text</div>
-                <input type="text" id="text-input" placeholder="Type to preview in all fonts..." value="The quick brown fox jumps over the lazy dog">
-            </div>
-        </div>
+        <div class="playspace"></div>
     </div>
-    
+
+    <a href="hands.html" class="camera-button" aria-label="Open hands page">
+        <!-- Camera SVG (outline) -->
+        <svg class="camera-icon" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <title>Camera</title>
+          <path d="M21 7h-3.2l-1.6-2.4A1 1 0 0 0 15.6 4H8.4a1 1 0 0 0-.6.6L6.2 7H3a1 1 0 0 0-1 1v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a1 1 0 0 0-1-1zM12 18a4 4 0 1 1 0-8 4 4 0 0 1 0 8z" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      
+    <button id="save-png-btn" class="save-png-btn">Save PNG</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="editor.js"></script>
 </body>
 </html>
