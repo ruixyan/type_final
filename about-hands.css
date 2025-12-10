@@ -434,3 +434,22 @@
     .camera-button { transition: none; transform: none; }
   }
   
+  .citation {
+    margin-top: 12px;
+    font-size: 12px;
+    font-style: italic;
+    text-align: right;
+    opacity: 0.6;
+    font-family: "Geist_Light", sans-serif;
+    user-select: text;
+    cursor: text;
+}
+
+.citation:focus {
+    opacity: 0.9;
+}
+
+.citation:empty:before {
+    content: "Add citation...";
+    opacity: 0.4;
+}

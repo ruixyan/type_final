@@ -31,6 +31,10 @@ let dwellElement = null;
 let dwellStartTime = null;
 let dwellTimeout = null;
 
+// Canvas overlay for drawing landmarks
+let canvas = null;
+let ctx = null;
+
 // Initialize MediaPipe
 async function init() {
     try {
@@ -66,6 +70,10 @@ async function startCamera() {
         video.onloadeddata = () => {
             loading.style.display = 'none';
             video.classList.remove('hidden');
+            
+            // Create canvas overlay for landmarks
+            createLandmarkCanvas();
+            
             predictWebcam();
         };
     } catch (err) {
@@ -73,6 +81,24 @@ async function startCamera() {
         loading.style.display = 'none';
         error.style.display = 'flex';
     }
+}
+
+function createLandmarkCanvas() {
+    canvas = document.createElement('canvas');
+    canvas.width = video.videoWidth || 640;
+    canvas.height = video.videoHeight || 480;
+    canvas.style.cssText = `
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        transform: scaleX(-1);
+    `;
+    
+    ctx = canvas.getContext('2d');
+    video.parentElement.appendChild(canvas);
 }
 
 function predictWebcam() {
@@ -86,6 +112,11 @@ function predictWebcam() {
 }
 
 function processGesture(results) {
+    // Clear canvas
+    if (ctx && canvas) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    
     if (!results.landmarks || results.landmarks.length === 0) {
         gestureState.isHandDetected = false;
         gestureState.isPinching = false;
@@ -93,6 +124,12 @@ function processGesture(results) {
         activeSlider = null;
         lastSliderValue = null;
         resetDwell();
+        
+        // Hide help popup when no hand detected
+        if (window.gestureHoverHelp) {
+            window.gestureHoverHelp(false);
+        }
+        
         updateUI();
         return;
     }
@@ -119,11 +156,17 @@ function processGesture(results) {
         const rawY = indexTip.y;
 
         if (handedness === "Right") {
+            // RIGHT HAND: Draw index finger dot
+            drawLandmark(indexTip, '#10b981', 8);
+            
             // RIGHT HAND: Cursor, Pinch to Scroll, Dwell to Click
             gestureState.isHandDetected = true;
             gestureState.isPinching = isPinching;
             gestureState.cursorX += (rawX - gestureState.cursorX) * 0.2;
             gestureState.cursorY += (rawY - gestureState.cursorY) * 0.2;
+
+            // Check if hovering over help button (instant show, no click)
+            checkHelpButtonHover(gestureState.cursorX, gestureState.cursorY);
 
             // Scroll logic
             if (isPinching) {
@@ -163,12 +206,75 @@ function processGesture(results) {
             }
 
         } else if (handedness === "Left") {
+            // LEFT HAND: Draw index, thumb, and connecting line
+            drawLandmark(indexTip, '#f59e0b', 8);
+            drawLandmark(thumbTip, '#f59e0b', 8);
+            drawLine(indexTip, thumbTip, '#f59e0b', 3);
+            
             // LEFT HAND: Slider Control
             handleSliderControl(rawX, rawY, distance);
         }
     }
 
     updateUI();
+}
+
+function drawLandmark(landmark, color, size) {
+    if (!ctx || !canvas) return;
+    
+    const x = landmark.x * canvas.width;
+    const y = landmark.y * canvas.height;
+    
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.arc(x, y, size, 0, 2 * Math.PI);
+    ctx.fill();
+}
+
+function drawLine(point1, point2, color, width) {
+    if (!ctx || !canvas) return;
+    
+    const x1 = point1.x * canvas.width;
+    const y1 = point1.y * canvas.height;
+    const x2 = point2.x * canvas.width;
+    const y2 = point2.y * canvas.height;
+    
+    ctx.strokeStyle = color;
+    ctx.lineWidth = width;
+    ctx.beginPath();
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x2, y2);
+    ctx.stroke();
+}
+
+function checkHelpButtonHover(normalizedX, normalizedY) {
+    const x = normalizedX * window.innerWidth;
+    const y = normalizedY * window.innerHeight;
+    
+    const helpBtn = document.getElementById('help-btn');
+    if (!helpBtn) {
+        console.log('Help button not found');
+        return;
+    }
+    
+    const helpRect = helpBtn.getBoundingClientRect();
+    const isOverHelp = (
+        x >= helpRect.left && 
+        x <= helpRect.right && 
+        y >= helpRect.top && 
+        y <= helpRect.bottom
+    );
+    
+    if (isOverHelp) {
+        console.log('Cursor over help button!', x, y);
+    }
+    
+    // Instantly show/hide popup on hover
+    if (window.gestureHoverHelp) {
+        window.gestureHoverHelp(isOverHelp);
+    } else {
+        console.log('window.gestureHoverHelp not available');
+    }
 }
 
 function handleSliderControl(cursorX, cursorY, pinchDistance) {
@@ -244,6 +350,12 @@ function handleDwellClick(normalizedX, normalizedY) {
     
     const element = document.elementFromPoint(x, y);
     
+    // Skip dwell click for hover-only elements (like help button)
+    if (element && element.classList.contains('gesture-hover-only')) {
+        resetDwell();
+        return;
+    }
+    
     // Check if element is clickable
     const isClickable = element && (
         element.tagName === 'A' ||
@@ -257,16 +369,22 @@ function handleDwellClick(normalizedX, normalizedY) {
     if (isClickable) {
         const targetElement = element.closest('a') || element.closest('button') || element;
         
+        // Skip if it's a hover-only element
+        if (targetElement.classList.contains('gesture-hover-only')) {
+            resetDwell();
+            return;
+        }
+        
         // Same element as before
         if (dwellElement === targetElement) {
             const dwellTime = Date.now() - dwellStartTime;
-            const progress = Math.min(dwellTime / 3000, 1); // 3 seconds
+            const progress = Math.min(dwellTime / 1500, 1); // 1.5 seconds
             
             // Update progress indicator
             updateDwellProgress(x, y, progress);
             
-            if (dwellTime >= 3000 && !dwellTimeout) {
-                // Click after 3 seconds
+            if (dwellTime >= 1500 && !dwellTimeout) {
+                // Click after 1.5 seconds
                 dwellTimeout = true;
                 performClick(normalizedX, normalizedY);
                 setTimeout(() => {
@@ -408,8 +526,8 @@ function updateUI() {
             statusText.textContent = 'Right Hand | PINCH & DRAG';
         } else if (dwellElement) {
             const elapsed = Date.now() - dwellStartTime;
-            const remaining = Math.ceil((3000 - elapsed) / 1000);
-            statusText.textContent = `Clicking in ${remaining}s`;
+            const remaining = Math.max(0, Math.ceil((1500 - elapsed) / 1000 * 10) / 10);
+            statusText.textContent = `Clicking in ${remaining.toFixed(1)}s`;
         } else {
             statusText.textContent = 'Hand detected (PINCH)';
         }
@@ -433,4 +551,3 @@ minimizeBtn.onclick = () => {
 
 // Start
 init();
-
