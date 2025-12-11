@@ -456,7 +456,15 @@ select:focus {
     background: #f5f5f5;
     border-radius: 50%;
 }
+img {
+    width: 24px;
+    height: 24px;
+}
 
+#larger {
+    width: 36px;
+    height: 36px;
+}
 .gesture-cursor-dot.pinching .gesture-cursor-inner {
     background: #080808;
 }
@@ -696,47 +704,203 @@ select:focus {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
     border: solid 1px rgba(255, 255, 255, 0.5);
     text-decoration: none;
     z-index: 9999;
     mix-blend-mode: difference;
-  }
-  
-  /* Slight transparent backdrop so it feels part of the UI */
-  /* .camera-button::after{
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    pointer-events: none;
-  }
-   */
-  /* SVG sizing */
+}
 
-  svg {
+/* Camera indicator - blinking green dot */
+.camera-indicator {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 8px;
+    height: 8px;
+    background-color: #10b981;
+    border-radius: 50%;
+    animation: blink 2s ease-in-out infinite;
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.3;
+    }
+}
+
+/* SVG sizing */
+svg {
     mix-blend-mode: difference;
-  }
-  .camera-icon {
+}
+
+.camera-icon {
     width: 22px;
     height: 22px;
     display: block;
-    color: #111; /* stroke color (uses currentColor) */
+    color: #111;
     background: transparent;
-  }
-  
-  /* Hover + active */
-  .camera-button:hover {
+}
 
-    background-color:#f5f5f5;
-  }
-  
-  .camera-button:active {
+/* Hover + active */
+.camera-button:hover {
+    background-color: #f5f5f5;
+}
+
+.camera-button:active {
     transform: translateY(-1px) scale(0.98);
-  }
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    .camera-button { 
+        transition: none; 
+        transform: none; 
+    }
+    .camera-indicator {
+        animation: none;
+        opacity: 1;
+    }
+}
   
-  /* Respect prefers-reduced-motion */
-  @media (prefers-reduced-motion: reduce) {
-    .camera-button { transition: none; transform: none; }
-  }
-  
+  /* HELP BUTTON */
+.help-btn {
+    position: fixed;
+    bottom: 220px;
+    right: 24px;
+    width: 40px;
+    height: 40px;
+    background: rgba(8, 8, 8, 0.8);
+    border: 1px solid #333;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 9999;
+    transition: all 200ms ease;
+    color: #f5f5f5;
+}
+
+.help-btn:hover {
+    background: rgba(245, 245, 245, 0.1);
+    border-color: #555;
+    transform: scale(1.05);
+}
+
+.help-btn svg {
+    display: block;
+}
+
+/* HELP POPUP */
+.help-popup {
+    position: fixed;
+    bottom: 270px;
+    right: 24px;
+    width: 280px;
+    background: #080808;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 20px;
+    z-index: 9998;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: all 300ms ease;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.help-popup.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.help-popup-content h3 {
+    font-family: "Geist_Regular", sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #f5f5f5;
+    margin-bottom: 16px;
+    letter-spacing: 0.05em;
+}
+
+.help-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.help-item:last-child {
+    margin-bottom: 0;
+}
+
+.help-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.help-text {
+    flex: 1;
+}
+
+.help-text strong {
+    font-family: "Geist_Regular", sans-serif;
+    font-size: 12px;
+    color: #f5f5f5;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.help-text p {
+    font-family: "Geist_Light", sans-serif;
+    font-size: 11px;
+    color: #999;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.citation {
+    margin-top: 12px;
+    font-size: 12px;
+    font-style: italic;
+    text-align: right;
+    opacity: 0.6;
+    font-family: "Geist_Light", sans-serif;
+    user-select: text;
+    cursor: text;
+}
+
+.citation:focus {
+    opacity: 0.9;
+}
+
+.citation:empty:before {
+    content: "Add citation...";
+    opacity: 0.4;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .help-btn {
+        bottom: 170px;
+        right: 16px;
+        width: 36px;
+        height: 36px;
+    }
+
+    .help-btn svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .help-popup {
+        bottom: 220px;
+        right: 16px;
+        width: 260px;
+        padding: 16px;
+    }
+}

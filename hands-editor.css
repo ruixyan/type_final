@@ -1,0 +1,1091 @@
+/* === FONTS === */
+@font-face {
+    font-family: "Geist_Light";
+    src: url("fonts/GeistMono-Light.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Geist_Bold";
+    src: url("fonts/GeistMono-ExtraBold.ttf") format("truetype");
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Geist_Regular";
+    src: url("fonts/GeistMono-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Hand";
+    src: url("fonts/ruixyanv1-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "DIST-100";
+    src: url("fonts/ruixyanv1-DIST100.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "DIST-80";
+    src: url("fonts/ruixyanv1-DIST80.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "DIST-60";
+    src: url("fonts/ruixyanv1-DIST60.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "DIST-40";
+    src: url("fonts/ruixyanv1-DIST40.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "DIST-20";
+    src: url("fonts/ruixyanv1-DIST20.ttf") format("truetype");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #080808;
+    color: #f5f5f5;
+    overflow-x: hidden;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    padding: 14px 40px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 32px;
+    align-items: center;
+    z-index: 10;
+    font-family: "Geist_Regular", sans-serif;
+    mix-blend-mode: difference;
+}
+
+.navbar a {
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #eee;
+    transition: color 0.25s ease, opacity 0.25s ease;
+}
+.navbar a:hover { color: #717171; opacity: 1; }
+.navbar a:active { color: #717171; }
+  
+/* CONTAINER */
+.container {
+    width: 100vw;
+    padding-top: 60px;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    height: calc(100vh - 60px);
+    overflow: hidden;
+}
+
+/* CONTROLS */
+.controls {
+    padding: 0px 20px 20px 20px;
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+    height: 100%;
+}
+
+/* CHARACTER PREVIEW */
+.char-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.preview-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #999;
+    font-weight: 600;
+    font-family: "Geist_Regular", sans-serif;
+}
+
+#current-char {
+    font-size: 60px;
+    line-height: 1;
+    text-align: center;
+    padding: 15px;
+    border: 2px solid #333;
+    background: #0a0a0a;
+    color: #f5f5f5;
+    font-family: "Hand", serif;
+    transition: font-family 0.2s ease, color 0.2s ease;
+}
+
+/* CHARACTER GRID */
+.char-grid-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.grid-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #999;
+    font-weight: 600;
+    font-family: "Geist_Regular", sans-serif;
+}
+
+#char-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 3px;
+    max-height: 180px;
+    overflow-y: auto;
+    padding: 4px;
+    background: #0a0a0a;
+    border: 1px solid #333;
+}
+
+#char-grid::-webkit-scrollbar {
+    width: 6px;
+}
+
+#char-grid::-webkit-scrollbar-track {
+    background: #0a0a0a;
+}
+
+#char-grid::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 3px;
+}
+
+#char-grid::-webkit-scrollbar-thumb:hover {
+    background: #444;
+}
+
+.char-cell {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Geist_Regular", sans-serif;
+    font-size: 12px;
+    color: #666;
+    background: #111;
+    border: 1px solid #222;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.char-cell:hover {
+    background: #1a1a1a;
+    color: #f5f5f5;
+    border-color: #444;
+}
+
+.char-cell.active {
+    background: #f5f5f5;
+    color: #080808;
+    border-color: #f5f5f5;
+}
+
+.char-cell.customized {
+    border-color: #666;
+}
+
+.char-cell.customized::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 3px;
+    height: 3px;
+    background: #f5f5f5;
+    border-radius: 50%;
+}
+
+/* CONTROLS ROW */
+.controls-row {
+    display: grid;
+    grid-template-columns: 1fr 60px;
+    gap: 12px;
+    align-items: end;
+}
+
+/* SAVE BUTTON */
+#save-char-btn {
+    padding: 12px 20px;
+    background: #f5f5f5;
+    color: #080808;
+    border: none;
+    font-family: "Geist_Regular", sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#save-char-btn:hover {
+    background: #e0e0e0;
+}
+
+#save-char-btn:active {
+    transform: scale(0.98);
+}
+
+.control {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.control label {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #999;
+    font-weight: 600;
+    font-family: "Geist_Regular", sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.control label span {
+    color: #f5f5f5;
+    font-weight: 600;
+    font-size: 11px;
+    min-width: 40px;
+    text-align: right;
+}
+
+/* TEXT INPUT */
+.text-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #999;
+    font-weight: 600;
+    font-family: "Geist_Regular", sans-serif;
+}
+
+#text-input {
+    width: 100%;
+    background: #080808;
+    border: 2px solid #333;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: #f5f5f5;
+    font-family: "Geist_Regular", sans-serif;
+    transition: border-color 0.2s ease;
+    resize: vertical;
+    min-height: 50px;
+}
+
+#text-input:focus {
+    outline: none;
+    border-color: #666;
+}
+
+#text-input::placeholder {
+    color: #555;
+}
+
+/* RANGE SLIDERS */
+input[type="range"] {
+    width: 100%;
+    height: 2px;
+    background: #333;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #f5f5f5;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: transform 0.1s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: #f5f5f5;
+    cursor: pointer;
+    border-radius: 50%;
+    border: none;
+    transition: transform 0.1s ease;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+    transform: scale(1.2);
+}
+
+/* COLOR PICKER */
+.color-picker-wrapper {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+#colorPicker, #bgColorPicker {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #333;
+    background: transparent;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+    padding: 0;
+}
+
+#colorPicker:hover, #bgColorPicker:hover {
+    border-color: #666;
+}
+
+/* PLAYSPACE */
+.playspace {
+    padding: 60px;
+    min-height: calc(100vh - 60px);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+}
+
+.playspace:empty::before {
+    content: 'Text will appear here...';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #333;
+    font-size: 1rem;
+    font-family: "Geist_Regular", sans-serif;
+    text-align: center;
+    pointer-events: none;
+    text-transform: uppercase;
+}
+
+/* EDITABLE TEXT DISPLAY */
+.playspace-text {
+    font-size: 64px;
+    line-height: 1.2;
+    outline: none;
+    cursor: text;
+    border: none;
+    word-wrap: break-word;
+    font-family: "Hand", serif;
+    transition: font-size 0.1s ease, color 0.2s ease;
+    width: 100%;
+    text-align: center;
+}
+
+.playspace-text:focus {
+    outline: none;
+    border: none;
+}
+
+.playspace-text-container {
+    line-height: 1.2;
+    word-wrap: break-word;
+    width: 100%;
+    text-align: center;
+}
+
+/* SAVE PNG BUTTON */
+.save-png-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 14px 24px;
+    background: #f5f5f5;
+    color: #080808;
+    border: none;
+    font-family: "Geist_Regular", sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    mix-blend-mode: difference;
+}
+
+.save-png-btn:hover {
+    mix-blend-mode: normal;
+}
+
+.save-png-btn:active {
+    mix-blend-mode: normal;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+    }
+
+    .controls {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        padding: 30px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+
+    .control {
+        flex: 1;
+        min-width: 200px;
+    }
+
+    .navbar {
+        left: 0;
+        transform: none;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 14px 20px;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .navbar a {
+        font-size: 0.8rem;
+    }
+
+    .container {
+        padding-top: 100px;
+    }
+
+    .controls {
+        padding: 20px;
+        flex-direction: column;
+    }
+
+    .control {
+        min-width: 100%;
+    }
+
+    .playspace {
+        padding: 40px 20px;
+        min-height: 50vh;
+    }
+
+    .playspace-text {
+        font-size: 48px;
+    }
+
+    #text-input {
+        font-size: 14px;
+        padding: 12px 14px;
+    }
+
+    .save-png-btn {
+        bottom: 20px;
+        right: 20px;
+        padding: 12px 20px;
+    }
+}
+
+/* REDUCE MOTION */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+.camera-button {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    width: 52px;
+    height: 52px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: solid 1px rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+}
+
+/* Camera indicator - blinking green dot */
+.camera-indicator {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 8px;
+    height: 8px;
+    background-color: #10b981;
+    border-radius: 50%;
+    animation: blink 2s ease-in-out infinite;
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.3;
+    }
+}
+
+/* SVG sizing */
+svg {
+    mix-blend-mode: difference;
+}
+
+.camera-icon {
+    width: 22px;
+    height: 22px;
+    display: block;
+    color: #111;
+    background: transparent;
+}
+
+/* Hover + active */
+.camera-button:hover {
+    background-color: #f5f5f5;
+}
+
+.camera-button:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    .camera-button { 
+        transition: none; 
+        transform: none; 
+    }
+    .camera-indicator {
+        animation: none;
+        opacity: 1;
+    }
+}
+  
+
+ /* HELP BUTTON */
+.help-btn {
+    position: fixed;
+    bottom: 220px;
+    right: 24px;
+    width: 40px;
+    height: 40px;
+    background: rgba(8, 8, 8, 0.8);
+    border: 1px solid #333;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 9999;
+    transition: all 200ms ease;
+    color: #f5f5f5;
+}
+
+.help-btn:hover {
+    background: rgba(245, 245, 245, 0.1);
+    border-color: #555;
+    transform: scale(1.05);
+}
+
+.help-btn svg {
+    display: block;
+} 
+
+/* === GESTURE CONTROL STYLES === */
+#gesture-cursor {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    display: none;
+    transform: translate(-50%, -50%);
+    transition: transform 75ms ease-out;
+}
+
+#gesture-cursor.visible {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.gesture-cursor-dot {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid #f5f5f5;
+    background: rgba(8, 8, 8, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 200ms;
+    box-shadow: 0 0 20px rgba(245, 245, 245, 0.3);
+}
+
+.gesture-cursor-dot.pinching {
+    background: rgba(245, 245, 245, 0.9);
+    border-color: #f5f5f5;
+    transform: scale(1.25);
+}
+
+.gesture-cursor-inner {
+    width: 8px;
+    height: 8px;
+    background: #f5f5f5;
+    border-radius: 50%;
+}
+
+.gesture-cursor-dot.pinching .gesture-cursor-inner {
+    background: #080808;
+}
+
+.gesture-cursor-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #f5f5f5;
+    background: rgba(8, 8, 8, 0.9);
+    padding: 4px 10px;
+    border-radius: 12px;
+    white-space: nowrap;
+    display: none;
+    font-family: "Geist_Regular", sans-serif;
+    letter-spacing: 0.05em;
+}
+
+.gesture-cursor-label.visible {
+    display: block;
+}
+
+#gesture-widget {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9998;
+    width: 240px;
+    height: 180px;
+    background: #080808;
+    border: 1px solid #333;
+    border-radius: 12px;
+    /* box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8); */
+    transition: all 300ms ease-in-out;
+    overflow: hidden;
+}
+
+#gesture-widget.minimized {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+}
+
+#gesture-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scaleX(-1);
+}
+
+#gesture-video.hidden {
+    opacity: 0;
+}
+
+#gesture-loading, #gesture-error {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #666;
+    padding: 16px;
+    text-align: center;
+    font-family: "Geist_Light", sans-serif;
+}
+
+#gesture-error {
+    color: #f5f5f5;
+    background: #080808;
+}
+
+.gesture-spinner {
+    width: 28px;
+    height: 28px;
+    border: 2px solid #333;
+    border-top-color: #f5f5f5;
+    border-radius: 50%;
+    animation: gesture-spin 1s linear infinite;
+}
+
+@keyframes gesture-spin {
+    to { transform: rotate(360deg); }
+}
+
+#gesture-controls {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    gap: 4px;
+}
+
+.gesture-control-btn {
+    padding: 6px;
+    background: rgba(8, 8, 8, 0.8);
+    border: 1px solid #333;
+    color: #f5f5f5;
+    border-radius: 8px;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition: all 200ms;
+}
+
+.gesture-control-btn:hover {
+    background: rgba(245, 245, 245, 0.1);
+    border-color: #555;
+}
+
+#gesture-status {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    background: linear-gradient(to top, rgba(8, 8, 8, 0.95), transparent);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 500;
+    color: #999;
+    font-family: "Geist_Light", sans-serif;
+}
+
+#gesture-widget.minimized #gesture-status {
+    display: none;
+}
+
+.gesture-status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #666;
+}
+
+.gesture-status-dot.active {
+    background: #f5f5f5;
+    animation: gesture-pulse 2s infinite;
+}
+
+@keyframes gesture-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+@keyframes ripple {
+    from {
+        transform: scale(0);
+        opacity: 1;
+    }
+    to {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
+
+/* === GESTURE CONTROL STYLES === */
+#gesture-widget {
+    position: fixed;
+    bottom: 24px;
+    right: 30px;
+    z-index: 9998;
+    width: 240px;
+    height: 180px;
+    background: #080808;
+    border: 1px solid #333;
+    border-radius: 12px;
+    transition: all 300ms ease-in-out;
+    overflow: hidden;
+}
+
+#gesture-widget.minimized {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+}
+
+#gesture-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scaleX(-1);
+}
+
+#gesture-video.hidden {
+    opacity: 0;
+}
+
+#gesture-loading, #gesture-error {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #666;
+    padding: 16px;
+    text-align: center;
+    font-family: "Geist_Light", sans-serif;
+}
+
+#gesture-error {
+    color: #f5f5f5;
+    background: #080808;
+}
+
+.gesture-spinner {
+    width: 28px;
+    height: 28px;
+    border: 2px solid #333;
+    border-top-color: #f5f5f5;
+    border-radius: 50%;
+    animation: gesture-spin 1s linear infinite;
+}
+
+@keyframes gesture-spin {
+    to { transform: rotate(360deg); }
+}
+
+#gesture-controls {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    gap: 4px;
+}
+
+.gesture-control-btn {
+    padding: 6px;
+    background: rgba(8, 8, 8, 0.8);
+    border: 1px solid #333;
+    color: #f5f5f5;
+    border-radius: 8px;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition: all 200ms;
+}
+
+.gesture-control-btn:hover {
+    background: rgba(245, 245, 245, 0.1);
+    border-color: #555;
+}
+
+#gesture-status {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    background: linear-gradient(to top, rgba(8, 8, 8, 0.95), transparent);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 500;
+    color: #999;
+    font-family: "Geist_Light", sans-serif;
+}
+
+#gesture-widget.minimized #gesture-status {
+    display: none;
+}
+
+.gesture-status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #666;
+}
+
+.gesture-status-dot.active {
+    background: #10b981;
+    animation: gesture-pulse 2s infinite;
+}
+
+@keyframes gesture-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+/* SAVE PNG BUTTON - moved left of webcam */
+.save-png-btn {
+    position: fixed;
+    bottom: 85px;
+    right: 290px;
+    padding: 14px 24px;
+    background: #f5f5f5;
+    color: #080808;
+    border: none;
+    font-family: "Geist_Regular", sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    mix-blend-mode: difference;
+}
+
+.save-png-btn:hover {
+    mix-blend-mode: normal;
+}
+
+.save-png-btn:active {
+    mix-blend-mode: normal;
+}
+
+/* HELP POPUP */
+.help-popup {
+    position: fixed;
+    bottom: 220px;
+    right: 24px;
+    width: 320px;
+    background: #080808;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 20px;
+    z-index: 9998;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: all 300ms ease;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.help-popup.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.help-popup-content h3 {
+    font-family: "Geist_Regular", sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #f5f5f5;
+    margin-bottom: 16px;
+    letter-spacing: 0.05em;
+}
+
+.help-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.help-item:last-child {
+    margin-bottom: 0;
+}
+
+.help-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.help-text {
+    flex: 1;
+}
+
+.help-text strong {
+    font-family: "Geist_Regular", sans-serif;
+    font-size: 12px;
+    color: #f5f5f5;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.help-text p {
+    font-family: "Geist_Light", sans-serif;
+    font-size: 11px;
+    color: #999;
+    line-height: 1.4;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    #gesture-widget {
+        width: 180px;
+        height: 135px;
+        bottom: 80px;
+        right: 16px;
+    }
+
+    #gesture-widget.minimized {
+        width: 48px;
+        height: 48px;
+    }
+
+    .save-png-btn {
+        bottom: 170px;
+        right: 16px;
+    }
+
+    .help-popup {
+        bottom: 170px;
+        right: 16px;
+        width: 280px;
+        padding: 16px;
+    }
+}

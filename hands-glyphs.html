@@ -13,7 +13,7 @@
     <body>
         <div class="navbar">
             <a href="hands.html">/Home</a>
-            <a href="hands-about.html">/About</a>
+            <!-- <a href="hands-about.html">/About</a> -->
             <a href="hands-glyphs.html">/Glyphs</a>
             <a href="hands-editor.html">/Editor</a>
         </div>
@@ -70,6 +70,50 @@
     <span class="gesture-cursor-label">SCROLLING</span>
 </div>
 
+    <!-- Help Button -->
+    <button id="help-btn" class="help-btn gesture-hover-only">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+        </svg>
+    </button>
+
+    <!-- Help Popup -->
+    <div id="help-popup" class="help-popup">
+        <div class="help-popup-content">
+            <h3>Hand Tracking Controls</h3>
+            <div class="help-item">
+                <span class="help-icon"></span>
+                <div class="help-text">
+                    <strong>RIGHT HAND</strong>
+                    <p>Index finger moves the cursor. <br><br>Hovering over
+                        an element for 1.5 seconds will click on it.
+                    </p>
+                </div>
+            </div>
+            <div class="help-item">
+                <span class="help-icon"></span>
+                <div class="help-text">
+                    <strong>LEFT HAND</strong>
+                    <p>Starting with your thumb, holding up
+                        a number of fingers will determine
+                        the level of distortion displayed.
+
+                        <br><br>
+
+                        <img src="SVG/hands/Asset 1.svg" alt="hand icon">
+                        <img src="SVG/hands/Asset 2.svg" alt="hand icon">
+                        <img id="larger" src="SVG/hands/Asset 3.svg" alt="hand icon">
+                        <img id ="larger" src="SVG/hands/Asset 4.svg" alt="hand icon">
+                        <img id="larger" src="SVG/hands/Asset 5.svg" alt="hand icon">
+                        <img id="larger" src="SVG/hands/Asset 6.svg" alt="hand icon">
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 <div id="gesture-widget">
     <div id="gesture-loading">
         <div class="gesture-spinner"></div>
@@ -101,11 +145,13 @@
       <title>Camera</title>
       <path d="M21 7h-3.2l-1.6-2.4A1 1 0 0 0 15.6 4H8.4a1 1 0 0 0-.6.6L6.2 7H3a1 1 0 0 0-1 1v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a1 1 0 0 0-1-1zM12 18a4 4 0 1 1 0-8 4 4 0 0 1 0 8z" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
+    <span class="camera-indicator"></span>
   </a>
 
 <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.min.js"></script>
 <script src="hands-glyphs.js"></script>
 <!-- <script src="main.js"></script> -->
 <script type="module" src="glyphs-gesture-control.js"></script>
+<script src="help-handler.js"></script>
 </body>
 </html>

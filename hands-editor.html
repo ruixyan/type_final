@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor</title>
+    <link rel="stylesheet" href="hands-editor.css">
+    <link rel="icon" type="image/svg+xml" href="SVG/E.svg">
+</head>
+<body>
+    <div class="navbar">
+        <a href="hands.html">/Home</a>
+        <!-- <a href="about.html">/About</a> -->
+        <a href="hands-glyphs.html">/Glyphs</a>
+        <a href="hands-editor.html">/Editor</a>
+    </div>
+    <div class="container">
+        <div class="controls">
+            <!-- Character Preview -->
+            <div class="char-preview">
+                <div class="preview-label">Current Character</div>
+                <div id="current-char">A</div>
+            </div>
+
+            <!-- Character Grid -->
+            <div class="char-grid-section">
+                <div class="grid-label">Select Character</div>
+                <div id="char-grid"></div>
+            </div>
+
+            <!-- DIST + Color Control (Same Row) -->
+            <div class="controls-row">
+                <div class="control">
+                    <label for="weightSlider">DIST: <span id="weightValue">400</span></label>
+                    <input id="weightSlider" type="range" min="100" max="900" step="1" value="400">
+                </div>
+                <input id="colorPicker" type="color" value="#ffffff">
+            </div>
+
+            <!-- Save Button -->
+            <button id="save-char-btn">Save Character</button>
+
+            <!-- Text Scale Slider -->
+            <div class="control">
+                <label for="scaleSlider">Scale: <span id="scaleValue">64</span>px</label>
+                <input id="scaleSlider" type="range" min="16" max="400" step="1" value="64">
+            </div>
+
+            <!-- Background Color -->
+            <div class="controls-row">
+                <div class="control">
+                    <label for="bgColorPicker">Background:</label>
+                </div>
+                <input id="bgColorPicker" type="color" value="#f5f5f5">
+            </div>
+
+            <!-- Preview Text Input -->
+            <div class="control">
+                <div class="text-input-container">
+                    <div class="input-label">Preview Text</div>
+                    <input type="text" id="text-input" placeholder="Type here..." value="Hello!">
+                </div>
+            </div>
+        </div>
+        <div class="playspace"></div>
+    </div>
+        <!-- Help Button -->
+        <button id="help-btn" class="help-btn gesture-hover-only">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+        </button>
+    <!-- Help Popup -->
+    <div id="help-popup" class="help-popup">
+        <div class="help-popup-content">
+            <h3>Hand Tracking Controls</h3>
+            <div class="help-item">
+                <span class="help-icon">✋</span>
+                <div class="help-text">
+                    <strong>Point</strong>
+                    <p>Index finger moves the cursor. <br><br>Hovering over
+                        an element for 1.5 seconds will click on it.
+                    </p>
+                </div>
+            </div>
+            <div class="help-item">
+                <span class="help-icon">🤏</span>
+                <div class="help-text">
+                    <strong>Pinch and Drag</strong>
+                    <p>Pinch thumb + index together, then drag to scroll</p>
+                </div>
+            </div>
+            <div class="help-item">
+                <span class="help-icon">👆</span>
+                <div class="help-text">
+                    <strong>Sliders</strong>
+                    <p>Left hand controls the sliders. <br><br>Position green landmarks
+                    in a section, then pinch to adjust size.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="gesture-widget">
+        <div id="gesture-loading">
+            <div class="gesture-spinner"></div>
+            <span style="font-size: 11px; font-weight: 500;">Initializing...</span>
+        </div>
+        <div id="gesture-error" style="display: none;">
+            <span style="font-size: 11px;">Camera unavailable</span>
+        </div>
+        <video id="gesture-video" autoplay playsinline muted class="hidden"></video>
+        <div id="gesture-controls">
+            <button class="gesture-control-btn" id="gesture-minimize-btn">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="4 14 10 14 10 20"></polyline>
+                    <polyline points="20 10 14 10 14 4"></polyline>
+                    <line x1="14" y1="10" x2="21" y2="3"></line>
+                    <line x1="3" y1="21" x2="10" y2="14"></line>
+                </svg>
+            </button>
+        </div>
+        <div id="gesture-status">
+            <div class="gesture-status-dot"></div>
+            <span id="gesture-status-text">Raise hand</span>
+        </div>
+    </div>
+    <a href="editor.html" class="camera-button" aria-label="Open hands page">
+        <!-- Camera SVG (outline) -->
+        <svg class="camera-icon" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <title>Camera</title>
+          <path d="M21 7h-3.2l-1.6-2.4A1 1 0 0 0 15.6 4H8.4a1 1 0 0 0-.6.6L6.2 7H3a1 1 0 0 0-1 1v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a1 1 0 0 0-1-1zM12 18a4 4 0 1 1 0-8 4 4 0 0 1 0 8z" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="camera-indicator"></span>
+      </a>
+
+    <button id="save-png-btn" class="save-png-btn">Save PNG</button>
+    <script type="module" src="editor-gesture-control.js"></script>
+    <script src="help-handler.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="editor.js"></script>
+</body>
+</html>

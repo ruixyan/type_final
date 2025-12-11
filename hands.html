@@ -11,7 +11,7 @@
 <body>
     <div class="navbar">
         <a href="hands.html">/Home</a>
-        <a href="hands-about.html">/About</a>
+        <!-- <a href="hands-about.html">/About</a> -->
         <a href="hands-glyphs.html">/Glyphs</a>
         <a href="hands-editor.html">/Editor</a>
     </div>
@@ -21,6 +21,47 @@
             <canvas id="noiseCanvas"></canvas>
             <div class="hero-text" id="heroText">SYMBIOSIS</div>
         </div>
+        <div class="container" id="about">
+            <!-- <h1>/INFO</h1>
+            <p>Weights: 6
+              Glyphs: a lot
+              Languages
+            </p> -->
+            <div class="about-text">
+            <h1>/INFO</h1>
+            <br>
+            <p>
+              SYMBIOSIS was developed to explore our (humanity's) 
+              relationship with technology. It utilizes a distortion axis 
+              to create 6 different styles: starting with a vectorization of my handwiting and ending with 
+              some loose semblance of a letterform. 
+            </p>
+            </div>
+            <div class="about-text">
+            <h1>/DIST</h1>
+            <br>
+            <p>
+              Utilizing perlin noise as a method of distortion, I displaced the 
+              letterforms, and used a pixel grid to keep the resolution of the letterforms crisp 
+              for vectorization. Perlin noise is a common method of distortion used for generating
+              noise, and also landforms (the terrain generated in Minecraft uses perlin noise!)
+              It is also featured in the hero section above, where you can hover over it to interact.
+              <br>
+            </p>
+            </div>
+            <div class="about-text">
+            <h1>/CREDITS</h1>
+            <br>
+            <p>
+              Designed by me (Rachel Yan).
+              <br> Coded (SYMBIOSIS and this website!) also by me.
+              <br><br> Check out the type specimen here!
+            </p>
+            <div class="download-button-container">
+            <button class="download-button">DOWNLOAD</button>
+            </div>
+            </div>
+          </div>   
 
     
     <div class="container">
@@ -250,27 +291,29 @@
         <div class="help-popup-content">
             <h3>Hand Tracking Controls</h3>
             <div class="help-item">
-                <span class="help-icon">✋</span>
+                <img class="help-icon" src="SVG/hands/index.svg" alt="hand icon"></img>
                 <div class="help-text">
-                    <strong>Point</strong>
-                    <p>Index finger moves the cursor. <br><br>Hovering over
-                        an element for 1.5 seconds will click on it.
+                    <strong>RIGHT HAND</strong>
+                    <p>Index finger is the cursor. <br>Hovering over
+                        an element for 1.5 seconds will click.
                     </p>
+                    <br><p>Pinch thumb + index together, then drag up and down to scroll.</p>
                 </div>
             </div>
-            <div class="help-item">
-                <span class="help-icon">🤏</span>
-                <div class="help-text">
+            <!-- <div class="help-item"> -->
+                <!-- <span class="help-icon">🤏</span> -->
+                <!-- <div class="help-text">
                     <strong>Pinch and Drag</strong>
-                    <p>Pinch thumb + index together, then drag to scroll</p>
+
                 </div>
-            </div>
+            </div> -->
             <div class="help-item">
-                <span class="help-icon">👆</span>
+                <img class="help-icon" src="SVG/hands/pinch.svg" alt="hand icon"></img>
                 <div class="help-text">
-                    <strong>Sliders</strong>
-                    <p>Left hand controls the sliders. <br><br>Position green landmarks
-                    in a section, then pinch to adjust size.</p>
+                    <strong>LEFT HAND</strong>
+                    <p>Place green landmarks
+                    in a section, then pinch index and thumb 
+                    to adjust the slider.</p>
                 </div>
             </div>
         </div>
@@ -306,6 +349,7 @@
           <title>Camera</title>
           <path d="M21 7h-3.2l-1.6-2.4A1 1 0 0 0 15.6 4H8.4a1 1 0 0 0-.6.6L6.2 7H3a1 1 0 0 0-1 1v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a1 1 0 0 0-1-1zM12 18a4 4 0 1 1 0-8 4 4 0 0 1 0 8z" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
+        <span class="camera-indicator"></span>
       </a>
 
     <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.min.js"></script>
