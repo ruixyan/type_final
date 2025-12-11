@@ -843,3 +843,68 @@ svg {
         padding: 16px;
     }
 }
+
+  /* MOBILE RESPONSIVE - ABOUT SECTION */
+  @media (max-width: 1024px) {
+    #about {
+        flex-direction: column;
+        padding: 30px 40px 50px 40px;
+        gap: 2rem;
+    }
+
+    .about-text {
+        width: 100%;
+    }
+
+    p {
+        max-width: 100%;
+    }
+
+    .download-button-container {
+        justify-content: left;
+    }
+
+    .download-button {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    #about {
+        padding: 20px 24px 40px 24px;
+        gap: 1.5rem;
+    }
+
+    h1 {
+        font-size: 0.875rem;
+    }
+
+    p {
+        font-size: 0.7rem;
+        margin-left: 0;
+    }
+
+    .download-button {
+        width: 100%;
+        margin-top: 16px;
+    }
+
+    .download-button-container {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    #about {
+        padding: 16px 20px 32px 20px;
+        gap: 1.25rem;
+    }
+
+    h1 {
+        font-size: 0.8rem;
+    }
+
+    p {
+        font-size: 0.65rem;
+    }
+}
