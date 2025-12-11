@@ -437,19 +437,15 @@ input[type="range"]::-moz-range-thumb:hover {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    padding: 14px 24px;
-    background: #f5f5f5;
-    color: #080808;
+    padding: 10px 20px;
+    background-color: #f5f5f5;
+    color: #050505;
     border: none;
-    font-family: "Geist_Regular", sans-serif;
-    font-size: 11px;
-    text-transform: uppercase;
-    font-weight: 600;
+    border-radius: 4px;
     cursor: pointer;
-    transition: all 0.2s ease;
-    z-index: 100;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    mix-blend-mode: difference;
+    font-family: "Geist_Regular", sans-serif;
+    margin-top: 20px;
+    margin-right: 20px;
 }
 
 .save-png-btn:hover {
